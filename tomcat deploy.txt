@@ -1,0 +1,137 @@
+root@ip-172-31-34-5:/tmp# pwd
+/tmp
+root@ip-172-31-34-5:/tmp# cd
+root@ip-172-31-34-5:~# java -version
+openjdk version "1.8.0_342"
+OpenJDK Runtime Environment (build 1.8.0_342-8u342-b07-0ubuntu1~18.04-b07)
+OpenJDK 64-Bit Server VM (build 25.342-b07, mixed mode)
+root@ip-172-31-34-5:~# $ wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.8/bin/apache-tomcat-10.0.8.tar.gz
+$: command not found
+root@ip-172-31-34-5:~# wget ^V
+http://: Invalid host name.
+root@ip-172-31-34-5:~# wget
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+root@ip-172-31-34-5:~# yum update -y
+
+root@ip-172-31-34-5:~# apt-get update -y
+
+root@ip-172-31-34-5:~# apt-get install wget curl -y
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+wget is already the newest version (1.19.4-1ubuntu2.2).
+wget set to manually installed.
+The following packages will be upgraded:
+  curl libcurl4
+2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
+Need to get 379 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 curl amd64 7.58.0-2ubuntu3.20 [159 kB]
+Get:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.20 [220 kB]
+Fetched 379 kB in 1s (361 kB/s)
+(Reading database ... 75433 files and directories currently installed.)
+Preparing to unpack .../curl_7.58.0-2ubuntu3.20_amd64.deb ...
+Unpacking curl (7.58.0-2ubuntu3.20) over (7.58.0-2ubuntu3.19) ...
+Preparing to unpack .../libcurl4_7.58.0-2ubuntu3.20_amd64.deb ...
+Unpacking libcurl4:amd64 (7.58.0-2ubuntu3.20) over (7.58.0-2ubuntu3.19) ...
+Setting up libcurl4:amd64 (7.58.0-2ubuntu3.20) ...
+Setting up curl (7.58.0-2ubuntu3.20) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+root@ip-172-31-34-5:~# wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz
+--2022-10-18 07:50:50--  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.68/bin/apache-tomcat-9.0.68.tar.gz
+Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
+Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11597709 (11M) [application/x-gzip]
+Saving to: ‘apache-tomcat-9.0.68.tar.gz’
+
+apache-tomcat-9.0.68.tar.gz                     100%[=======================================================================================================>]  11.06M  --.-KB/s    in 0.08s
+
+2022-10-18 07:50:50 (137 MB/s) - ‘apache-tomcat-9.0.68.tar.gz’ saved [11597709/11597709]
+
+root@ip-172-31-34-5:~# ls
+apache-tomcat-9.0.68.tar.gz  snap
+root@ip-172-31-34-5:~# tar -zxvf apache-tomcat-9.0.68.tar.gz
+
+
+a
+root@ip-172-31-34-5:~# ls
+apache-tomcat-9.0.68  apache-tomcat-9.0.68.tar.gz  snap
+root@ip-172-31-34-5:~# cd /usr/local/
+root@ip-172-31-34-5:/usr/local# mkdir tomcat9
+root@ip-172-31-34-5:/usr/local# ls
+bin  etc  games  include  lib  man  sbin  share  src  tomcat9
+root@ip-172-31-34-5:/usr/local# cd
+root@ip-172-31-34-5:~# mv apache-tomcat-9.0.68 /usr/local/tomcat9/
+root@ip-172-31-34-5:~# cd /usr/local/tomcat9/
+root@ip-172-31-34-5:/usr/local/tomcat9# ls
+apache-tomcat-9.0.68
+root@ip-172-31-34-5:/usr/local/tomcat9#
+root@ip-172-31-34-5:/usr/local/tomcat9# ls
+apache-tomcat-9.0.68
+root@ip-172-31-34-5:/usr/local/tomcat9# mv apache-tomcat-9.0.68/ tomcat9
+root@ip-172-31-34-5:/usr/local/tomcat9# ls
+tomcat9
+root@ip-172-31-34-5:/usr/local/tomcat9# cd tomcat9/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9# ls
+BUILDING.txt  CONTRIBUTING.md  LICENSE  NOTICE  README.md  RELEASE-NOTES  RUNNING.txt  bin  conf  lib  logs  temp  webapps  work
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9# cd bin/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat9/tomcat9
+Using CATALINA_HOME:   /usr/local/tomcat9/tomcat9
+Using CATALINA_TMPDIR: /usr/local/tomcat9/tomcat9/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/local/tomcat9/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/tomcat9/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# curl ifcongig.co
+curl: (6) Could not resolve host: ifcongig.co
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# curl ifconfig.co
+43.204.24.118
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# ^C
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# cd
+root@ip-172-31-34-5:~# ls
+apache-tomcat-9.0.68.tar.gz  snap
+root@ip-172-31-34-5:~# cd /temp
+bash: cd: /temp: No such file or directory
+root@ip-172-31-34-5:~# cd /tmp/
+root@ip-172-31-34-5:/tmp# ls
+ambit2.war       systemd-private-e3c4ca56de234df88fe089e900eb81af-systemd-resolved.service-rIG2hy
+hsperfdata_root  systemd-private-e3c4ca56de234df88fe089e900eb81af-systemd-timesyncd.service-vbkYth
+root@ip-172-31-34-5:/tmp# mv ambit2.war /usr/local/tomcat9/tomcat9/lib/
+root@ip-172-31-34-5:/tmp# cd  /usr/local/tomcat9/tomcat9/lib/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/lib# ls
+ambit2.war           catalina-ssi.jar          ecj-4.20.jar   jaspic-api.jar   tomcat-coyote.jar   tomcat-i18n-es.jar  tomcat-i18n-pt-BR.jar  tomcat-jni.jar        websocket-api.jar
+annotations-api.jar  catalina-storeconfig.jar  el-api.jar     jsp-api.jar      tomcat-dbcp.jar     tomcat-i18n-fr.jar  tomcat-i18n-ru.jar     tomcat-util-scan.jar
+catalina-ant.jar     catalina-tribes.jar       jasper-el.jar  servlet-api.jar  tomcat-i18n-cs.jar  tomcat-i18n-ja.jar  tomcat-i18n-zh-CN.jar  tomcat-util.jar
+catalina-ha.jar      catalina.jar              jasper.jar     tomcat-api.jar   tomcat-i18n-de.jar  tomcat-i18n-ko.jar  tomcat-jdbc.jar        tomcat-websocket.jar
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/lib# mv ambit2.war  /usr/local/tomcat9/tomcat9/webapps/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/lib# cd ../webapps/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/webapps# ls
+ROOT  ambit2  ambit2.war  docs  examples  host-manager  manager
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/webapps# cd ../bin/
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# ./shutdown.sh
+Using CATALINA_BASE:   /usr/local/tomcat9/tomcat9
+Using CATALINA_HOME:   /usr/local/tomcat9/tomcat9
+Using CATALINA_TMPDIR: /usr/local/tomcat9/tomcat9/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/local/tomcat9/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/tomcat9/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+lroot@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# ls
+bootstrap.jar       catalina.sh  commons-daemon-native.tar.gz  configtest.sh  digest.sh     setclasspath.bat  shutdown.sh  tomcat-juli.jar       tool-wrapper.sh
+catalina-tasks.xml  ciphers.bat  commons-daemon.jar            daemon.sh      makebase.bat  setclasspath.sh   startup.bat  tomcat-native.tar.gz  version.bat
+catalina.bat        ciphers.sh   configtest.bat                digest.bat     makebase.sh   shutdown.bat      startup.sh   tool-wrapper.bat      version.sh
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin# ./startup.sh
+Using CATALINA_BASE:   /usr/local/tomcat9/tomcat9
+Using CATALINA_HOME:   /usr/local/tomcat9/tomcat9
+Using CATALINA_TMPDIR: /usr/local/tomcat9/tomcat9/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/local/tomcat9/tomcat9/bin/bootstrap.jar:/usr/local/tomcat9/tomcat9/bin/tomcat-juli.jar
+Using CATALINA_OPTS:
+Tomcat started.
+root@ip-172-31-34-5:/usr/local/tomcat9/tomcat9/bin#
+
